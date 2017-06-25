@@ -1,10 +1,61 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="table.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 <body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
+<div class="container">
+  <h1>HTML5 Editable Table</h1>
+  <p>Through the powers of <strong>contenteditable</strong> and some simple jQuery you can easily create a custom editable table. No need for a robust JavaScript library anymore these days.</p>
+  <div class="form-group col-sm-6">
+  <input type="text" class="form-control" id="input">
+</div>
+
+  <div class="col-sm-2">
+   <button class="btn btn-primary btn-sm table-add">Add</button>
+   <button class="btn btn-primary btn-sm table-search">Retrive</button></div>  
+  <div id="table" class="table-editable">
+    <table id="sub" class="table">
+    <!-- <span class="col-sm-4 glyphicon glyphicon-plus"></span> -->
+      <tr>
+        <th>Text</th>
+        <th>Palindrome</th>
+        <th>Delete</th>
+        <th>Details</th>
+      </tr>
+      <!-- This is our clonable table line -->
+     
+    </table>
+  </div>
+  
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Details</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <button id="export-btn" class="btn btn-primary">Export Data</button>
+  <p id="export"></p>
+</div>
 </body>
+
 </html>

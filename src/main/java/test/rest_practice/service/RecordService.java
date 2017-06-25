@@ -19,8 +19,8 @@ public class RecordService {
     return cache.getAllRecords();
   }
 
-  public Record getRecordById(String id) {
-    return cache.getRecordById(id);
+  public Record getRecord(String value) {
+    return cache.getRecord(value);
   }
 
   public boolean deleteRecord(String id) {
@@ -29,9 +29,9 @@ public class RecordService {
 
   public Record addRecord(Record record) {
     Boolean isPalindrome = isPalindrome(record.getValue());
-    Record newRecord = new Record(UUID.randomUUID().toString(), record.getValue(), isPalindrome);
+    Record newRecord = new Record(record.getValue(), isPalindrome, record.getDate());
     boolean isSaved = cache.saveRecord(newRecord);
-    return isSaved ? newRecord : new Record(null, null, null);
+    return isSaved ? newRecord : new Record(null, null,null);
   }
 
   public boolean isPalindrome(String s) {

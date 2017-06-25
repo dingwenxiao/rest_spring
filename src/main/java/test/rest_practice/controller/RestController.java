@@ -23,14 +23,14 @@ public class RestController {
   RecordService recordService;
 
 
-  @RequestMapping(value = "/getAllRecords", method = RequestMethod.GET)
-  public List<Record> getAllRecords() {
+  @RequestMapping(value = "/getAllRecords", method = RequestMethod.GET, produces = "application/json")
+  public @ResponseBody List<Record> getAllRecords() {
     return recordService.getRecords();
   }
 
-  @RequestMapping("/record/{id}")
-  public @ResponseBody Record getRecord(@PathVariable(value = "id") String id) {
-    return recordService.getRecordById(id);
+  @RequestMapping(value="/record/{value}", method = RequestMethod.GET)
+  public @ResponseBody Record getRecord(@PathVariable(value = "value") String id) {
+    return recordService.getRecord(id);
   }
 
   @RequestMapping(value = "/addRecord", method = RequestMethod.POST)

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,7 @@ import test.rest_practice.model.Record;
 public class Cache {
   Map<String, Record> cacheMap = new HashMap<>();
 
-  public Record getRecordById(String id) {
+  public Record getRecord(String id) {
     return cacheMap.get(id);
   }
 
@@ -33,7 +32,7 @@ public class Cache {
   }
 
   public boolean saveRecord(Record record) {
-    cacheMap.put(record.getId(), record);
+    cacheMap.put(record.getValue(), record);
     return true;
   }
 

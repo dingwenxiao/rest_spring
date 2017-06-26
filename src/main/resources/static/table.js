@@ -5,7 +5,7 @@ var $EXPORT = $('#export');
 
 $.get("/getAllRecords", function( data ) {
 $.each( data, function( key, value ) {
-  $('table tr:last').after('<tr><td>'+ value.value + '</td><td></td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.value +' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+  $('table tr:last').after('<tr><td>'+ value.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.value +' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
 });
 
 });
@@ -13,9 +13,9 @@ $.each( data, function( key, value ) {
 
 $('.table-add').click(function () {
    var value = $('#input').val();
-  $('table tr:last').after('<tr><td>'+ value + '</td><td></td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
-
-   var json = { 'value': value, 'isPalindrome': "false" , 'date': new Date().getDate()};
+  $('table tr:last').after('<tr><td>'+ value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value +' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+var now = moment().utc().format('YYYY-MM-DD HH:mm:ss');
+   var json = { 'value': value, 'isPalindrome': "false" , 'date': now};
      $.ajax({
   method: "POST",
   url: "/addRecord",
@@ -31,13 +31,13 @@ $('.table-search').click(function () {
   var value = $('#input').val();
   $('table').find("tr:gt(0)").remove();
 $.get("/record/" + value, function( data ) {
- $('table tr:last').after('<tr><td>'+ value + '</td><td></td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+ $('table tr:last').after('<tr><td>'+ data.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + data.value +' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
 });
 
 });
 
 $('table').on('click', 'tr td span.table-remove', function(){
-    var text = $(this).parent().prev('td').prev('td').text();
+    var text = $(this).parent().prev('td').text();
   $(this).parents('tr').detach();
   $.ajax({
     url: '/remove/' + text,
@@ -51,56 +51,13 @@ $('table').on('click', 'tr td span.table-remove', function(){
 $('#myModal').on('show.bs.modal', function (e) {
   var _self = $(this);
   var value = e.relatedTarget.id;
-
 $.get("/record/" + value, function( data ) {
-  $('.modal-body p').text("isPalindrome:" + data.isPalindrome + " date:" + data.date);
+  console.log(data.date);
+  $('.modal-body p').text("It is palindrome? " + (data.isPalindrome?"yes":"no") + " - created date: " + data.date);
 });
 
 })
 
-// $('.table-remove').click(function () {
-//   var text = $(this).parent().prev('td').prev('td').text();
-//   $(this).parents('tr').detach();
-//   $.ajax({
-//     url: '/remove/' + text,
-//     type: 'DELETE',
-//     success: function(result) {
-//         console.log("deleted successfully");
-//     }
-// });
-// });
-
-
-// A few jQuery helpers for exporting only
-jQuery.fn.pop = [].pop;
-jQuery.fn.shift = [].shift;
-
-$BTN.click(function () {
-  var $rows = $TABLE.find('tr:not(:hidden)');
-  var headers = [];
-  var data = [];
-  
-  // Get the headers (add special header logic here)
-  $($rows.shift()).find('th:not(:empty)').each(function () {
-    headers.push($(this).text().toLowerCase());
-  });
-  
-  // Turn all existing rows into a loopable array
-  $rows.each(function () {
-    var $td = $(this).find('td');
-    var h = {};
-    
-    // Use the headers from earlier to name our hash keys
-    headers.forEach(function (header, i) {
-      h[header] = $td.eq(i).text();   
-    });
-    
-    data.push(h);
-  });
-  
-  // Output the result
-  $EXPORT.text(JSON.stringify(data));
-});
 
 });
 

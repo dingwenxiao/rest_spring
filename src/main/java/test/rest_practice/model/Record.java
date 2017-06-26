@@ -2,10 +2,15 @@ package test.rest_practice.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Record {
 
   private String value;
   private Boolean isPalindrome;
+  
+  @JsonFormat
+  (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
   private Date date;
   
   public Record() {}

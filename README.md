@@ -9,8 +9,8 @@
 
 ## Implementation archetecture:<br />
 *Desgin Pattern is Model View and Controller. <br />
-*the front end function as displaying data and make REST request to backend.<br />
-*the backend server provide REST API and response client with Json.<br />
+*Front end function as displaying data and make REST request to backend.<br />
+*Backend server provide REST API and response client with Json.<br />
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
 

@@ -1,11 +1,18 @@
 # A Simple REST API Server
 
-Implementation techniques:
+Implementation techniques:<br />
 Front-end - html5, bootstrap, jquery etc.<br />
 back-end - Springboot <br />
-OS - Linux (Ubuntu 16.4) <br />
-Docker - CE <br />
-the server is dockerized and deployed on AWS.<br />
+OS - Linux (Ubuntu Xenial 16.04) <br />
+Docker CE <br />
+the server is dockerized and hosted on AWS.<br />
+
+Implementation archetecture:<br />
+Desgin Pattern is Model View and Controller. <br />
+the front end function as displaying data and make REST request to backend.<br />
+the backend server provide REST API and response client with Json.<br />
+(no database applied, only dummy cache class is used, so the data is stored in memory)
+
 
 How to build, deploy and access the app? 
 ================

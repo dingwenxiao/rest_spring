@@ -15,7 +15,7 @@ the backend server provide REST API and response client with Json.<br />
 
 
 ## How to build, deploy and access the app? 
-================
+
 After Creating Amazon ec2 instance, on the instance you can do following:<br />
 1.Create an image<br />
   mvn clean package docker:build -DpushImage

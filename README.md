@@ -28,7 +28,7 @@ After Creating Amazon ec2 instance, on the instance you can do following:<br />
 
 4. the access url is the your instance public ip address.<br />
 
-## Rest API Documentation
+Rest API Documentation
 =====
 | Method | URI | Data | HTTP Code | Response (in JSON) |
 | ------ | --- | ---- | --------- | ------------------ |

@@ -15,7 +15,7 @@ docker run -p 80:8080 -td rest_practice:0.1.0
 4. the access url is the your instance public ip address.
 
 Rest API Documentation
-
+=====
 | Method | URI | Data | HTTP Code | Response (in JSON) |
 | ------ | --- | ---- | --------- | ------------------ |
 | GET | /orders/customerName=John |  | 200 | {"data": [{"orderId": 3,"orderTime": 1467794649000,"totalPrice": 42,"customerName": "John"}, {"orderId": 5,"orderTime": 1467794649000,"totalPrice": 85,"customerName": "John"}, {"orderId": 6,"orderTime": 1467794649000,"totalPrice": 85,"customerName": "John"}], "total": 4, "link-next": "/orders?page=2&customerName=John", "link-self": "/orders?customerName=John"} |

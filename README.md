@@ -3,13 +3,13 @@
 How to build, deploy and access the app? 
 ================
 After Creating Amazon ec2 instance, on the instance you can do following:<br />
-1.create an image<br />
+1.Create an image<br />
   mvn clean package docker:build -DpushImage
 
-2.show container instance<br />
+2.Show container instance<br />
   docker images<br />
 
-3.run the docker image<br />
+3.Run the docker image<br />
   docker run -p 80:8080 -td rest_practice:0.1.0 <br />
 
 4. the access url is the your instance public ip address.<br />

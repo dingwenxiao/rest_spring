@@ -13,10 +13,18 @@ import test.rest_practice.model.Record;
 public class RecordService {
 
   @Autowired
-  Cache cache;
+  private Cache cache;
 
   public List<Record> getRecords() {
     return cache.getAllRecords();
+  }
+
+  public Cache getCache() {
+    return cache;
+  }
+
+  public void setCache(Cache cache) {
+    this.cache = cache;
   }
 
   public Record getRecord(String value) {
@@ -34,7 +42,7 @@ public class RecordService {
     return isSaved ? newRecord : new Record(null, null,null);
   }
 
-  public boolean isPalindrome(String s) {
+  private boolean isPalindrome(String s) {
     if (s == null || s.isEmpty()) {
       return true;
     }

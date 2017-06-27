@@ -1,6 +1,7 @@
 package test.rest_practice.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -45,4 +46,18 @@ public class Record {
     this.value = value;
   }
 
+  @Override
+  public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Record record = (Record) o;
+      return value == record.value &&
+              Objects.equals(isPalindrome, record.isPalindrome);
+  }
+
+  @Override
+  public int hashCode() {
+      return Objects.hash(value, isPalindrome);
+  }
+  
 }

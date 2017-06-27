@@ -26,9 +26,7 @@ After Creating Amazon ec2 instance, on the instance you can do following:<br />
 3.Run the docker image<br />
   docker run -p 80:8080 -td rest_practice:0.1.0 <br />
 
-4. the access url is the your instance public ip address.<br />
-asdf
-
+4.the access url is the your instance public ip address.<br />
 
 Rest API Documentation
 =====

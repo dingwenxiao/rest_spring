@@ -1,4 +1,8 @@
-# rest_spring
+# A Simple REST API Server
+Front-end - html5, bootstrap, jquery etc.
+back-end - Springboot 
+
+
 
 How to build, deploy and access the app? 
 ================

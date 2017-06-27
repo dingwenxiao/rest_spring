@@ -1,8 +1,11 @@
 # A Simple REST API Server
-Front-end - html5, bootstrap, jquery etc.
+
+Implementation techniques:
+Front-end - html5, bootstrap, jquery etc.<br />
 back-end - Springboot 
-
-
+OS - Linux (Ubuntu 16.4)
+Docker - CE
+the server is dockerized and deployed on AWS.
 
 How to build, deploy and access the app? 
 ================

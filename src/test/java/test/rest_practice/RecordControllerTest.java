@@ -32,6 +32,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import test.rest_practice.cache.Cache;
 import test.rest_practice.model.Record;
+import test.rest_practice.service.RecordService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
@@ -53,6 +54,9 @@ public class RecordControllerTest {
 
   @Autowired
   private Cache cache;
+
+  @Autowired
+  private RecordService recordService;
 
   @Autowired
   private WebApplicationContext webApplicationContext;
@@ -79,21 +83,22 @@ public class RecordControllerTest {
 
     cache.saveRecord(record1);
     cache.saveRecord(record2);
-
   }
 
   @Test
   public void getSingleRecord() throws Exception {
-    mockMvc.perform(get("/record/" + this.recordList.get(0).getValue())).andExpect(status().isOk())
+    Record record1 = new Record("aba", Boolean.TRUE, new Date());
+    record1 = recordService.addRecord(record1);
+    mockMvc.perform(get("/record/" + record1.getId())).andExpect(status().isOk())
         .andExpect(content().contentType(contentType))
-        .andExpect(jsonPath("$.value", is(this.recordList.get(0).getValue())))
+        .andExpect(jsonPath("$.value", is(record1.getValue())))
         .andExpect(jsonPath("$.isPalindrome", is(true)));
   }
 
   @Test
   public void getRecords() throws Exception {
-    mockMvc.perform(get("/getRecords?start=0&&offset=10"))
-        .andExpect(status().isOk()).andExpect(content().contentType(contentType))
+    mockMvc.perform(get("/getRecords?start=0&&offset=10&&value=")).andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
         .andExpect(jsonPath("$.[0].value", is(this.recordList.get(0).getValue())))
         .andExpect(jsonPath("$.[0].isPalindrome", is(true)));
   }

@@ -2,24 +2,34 @@ package test.rest_practice.model;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Record {
 
+  private String id;
   private String value;
   private Boolean isPalindrome;
-  
-  @JsonFormat
-  (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
   private Date date;
-  
+
   public Record() {}
 
   public Record(String value, Boolean isPalindrome, Date date) {
+    this.id = UUID.randomUUID().toString();// generate id automatically
     this.value = value;
     this.isPalindrome = isPalindrome;
     this.date = date;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 
   public Date getDate() {
@@ -48,15 +58,17 @@ public class Record {
 
   @Override
   public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      Record record = (Record) o;
-      return value == record.value;
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Record record = (Record) o;
+    return value == record.value;
   }
 
   @Override
   public int hashCode() {
-      return Objects.hash(value, isPalindrome);
+    return Objects.hash(value, isPalindrome);
   }
-  
+
 }

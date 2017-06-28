@@ -1,8 +1,6 @@
 package test.rest_practice.controller;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,15 +22,16 @@ public class RestController {
   RecordService recordService;
 
 
-  @RequestMapping(value = "/getRecords", method = RequestMethod.GET, params = {"start", "offset"},
-      produces = "application/json")
+  @RequestMapping(value = "/getRecords", method = RequestMethod.GET,
+      params = {"start", "offset", "value"}, produces = "application/json")
   public @ResponseBody List<Record> getAllRecords(@RequestParam(value = "start") int start,
-      @RequestParam(value = "offset") int offset) {
-    return recordService.getRecords(start, offset);
+      @RequestParam(value = "offset") int offset,
+      @RequestParam(value = "value", required = false) String value) {
+    return recordService.getRecords(start, offset, value);
   }
 
-  @RequestMapping(value = "/record/{value}", method = RequestMethod.GET)
-  public @ResponseBody Record getRecord(@PathVariable(value = "value") String id) {
+  @RequestMapping(value = "/record/{id}", method = RequestMethod.GET)
+  public @ResponseBody Record getRecord(@PathVariable(value = "id") String id) {
     return recordService.getRecord(id);
   }
 

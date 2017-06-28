@@ -17,29 +17,32 @@ public class Cache {
 
   public Record getRecord(String id) {
     for (Record record : cacheList) {
-      if (record.getValue().equals(id)) {
+      if (record.getId().equals(id)) {
         return record;
       }
     }
     return null;
   }
 
-  public List<Record> getAllRecords(int start, int offset) {
+  public List<Record> getAllRecords(int start, int offset, String value) {
     List<Record> records = new ArrayList<>();
     int end = Math.min(offset, pageSize) + start;
     end = Math.min(cacheList.size(), end);
     for (int index = start; index < end; index++) {
-      records.add(cacheList.get(index));
+      Record curRecord = cacheList.get(index);
+      if (value == null || "".equals(value)
+          || (value != null && curRecord.getValue().equals(value))) {
+        records.add(curRecord);
+      }
     }
-
     return records;
   }
 
-  public Record remove(String value) {
+  public Record remove(String id) {
     Iterator<Record> it = (Iterator) cacheList.iterator();
     while (it.hasNext()) {
       Record record = it.next();
-      if (record.getValue().equals(value)) {
+      if (record.getId().equals(id)) {
         it.remove();
         return record;
       }

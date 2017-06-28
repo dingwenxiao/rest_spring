@@ -15,8 +15,8 @@ public class RecordService {
   @Autowired
   private Cache cache;
 
-  public List<Record> getRecords(int start, int offset) {
-    return cache.getAllRecords(start, offset);
+  public List<Record> getRecords(int start, int offset, String value) {
+    return cache.getAllRecords(start, offset, value);
   }
 
   public Cache getCache() {

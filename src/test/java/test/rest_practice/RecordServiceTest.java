@@ -38,7 +38,7 @@ public class RecordServiceTest {
     Record record2 = new Record("bac", Boolean.FALSE, new Date());
     recordService.addRecord(record1);
     recordService.addRecord(record2);
-    List<Record> actualRecords = recordService.getRecords(0, 10);
+    List<Record> actualRecords = recordService.getRecords(0, 10, null);
     assertFalse(actualRecords.indexOf(record1) == -1);
   }
 
@@ -46,9 +46,9 @@ public class RecordServiceTest {
   public void getRecordTest() {
     Record record1 = new Record("aba", Boolean.TRUE, new Date());
     Record record2 = new Record("bac", Boolean.FALSE, new Date());
-    recordService.addRecord(record1);
-    recordService.addRecord(record2);
-    Record actualRecord = recordService.getRecord(record1.getValue());
+    record1 = recordService.addRecord(record1);
+    record2 = recordService.addRecord(record2);
+    Record actualRecord = recordService.getRecord(record1.getId());
     assertEquals(actualRecord, record1);
   }
 
@@ -56,10 +56,10 @@ public class RecordServiceTest {
   public void deleteRecord() {
     Record record1 = new Record("aba", Boolean.TRUE, new Date());
     Record record2 = new Record("bac", Boolean.FALSE, new Date());
-    recordService.addRecord(record1);
+    record1 = recordService.addRecord(record1);
     recordService.addRecord(record2);
-    recordService.deleteRecord(record1.getValue());
-    List<Record> actualRecords = recordService.getRecords(0, 10);
+    recordService.deleteRecord(record1.getId());
+    List<Record> actualRecords = recordService.getRecords(0, 10, null);
     assertEquals(actualRecords.size(), 1);
   }
 

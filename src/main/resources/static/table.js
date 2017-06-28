@@ -3,18 +3,19 @@ $(document).ready(function() {
     var $BTN = $('#export-btn');
     var $EXPORT = $('#export');
 
-    $.get("/getRecords?start=0&&offset=10", function(data) {
+    $.get("/getRecords?start=0&&offset=10&&value=", function(data) {
         $.each(data, function(key, value) {
-            $('table tr:last').after('<tr><td>' + value.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.value + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+            $('table tr:last').after('<tr><td data-id=' + value.id + '>' + value.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
         });
     });
 
 
     $('.table-add').click(function() {
         var value = $('#input').val();
-        $('table tr:last').after('<tr><td>' + value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+        //  $('table tr:last').after('<tr><td data-id=' + + '>' + value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
         var now = moment().utc().format('YYYY-MM-DD HH:mm:ss');
         var json = {
+            'id': 'dummy_id',
             'value': value,
             'isPalindrome': "false",
             'date': now
@@ -25,22 +26,25 @@ $(document).ready(function() {
             data: JSON.stringify(json),
             dataType: "json",
             contentType: 'application/json'
-        }).done(function(msg) {
-            console.log("Data Saved: " + msg);
+        }).done(function(data) {
+            console.log("Data Saved: " + data);
+            $('table tr:last').after('<tr><td data-id=' + data.id + '>' + data.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + data.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
         });
     });
 
     $('.table-search').click(function() {
         var value = $('#input').val();
         $('table').find("tr:gt(0)").remove();
-        $.get("/record/" + value, function(data) {
-            $('table tr:last').after('<tr><td>' + data.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + data.value + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+        $.get("/getRecords?start=0&&offset=10&&value=" + value, function(data) {
+            $.each(data, function(key, value) {
+                $('table tr:last').after('<tr><td data-id=' + value.id + '>' + value.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+            });
         });
 
     });
 
     $('table').on('click', 'tr td span.table-remove', function() {
-        var text = $(this).parent().prev('td').text();
+        var text = $(this).parent().prev('td').attr('data-id');
         $(this).parents('tr').detach();
         $.ajax({
             url: '/remove/' + text,

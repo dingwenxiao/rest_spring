@@ -1,0 +1,6 @@
+@startuml
+User -> Browser: delete record
+Browser -> SERVER: DELETE
+SERVER --> Browser: 204 No Content/404 not found
+Browser --> User: 204 No Content/404 not found
+@enduml

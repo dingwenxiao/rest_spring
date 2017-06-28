@@ -1,0 +1,6 @@
+@startuml
+User -> Browser: input text and click add
+Browser -> REST: POST
+REST --> Browser: json Response 
+Browser --> User: new record display
+@enduml

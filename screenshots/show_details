@@ -1,0 +1,6 @@
+@startuml
+User -> Browser: show details
+Browser -> SERVER: GET
+SERVER --> Browser: json Response 
+Browser --> User: details about the record
+@enduml

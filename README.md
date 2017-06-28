@@ -19,7 +19,7 @@
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/get_all_records.png)
 
-2)User click 'show details' - get record 
+2) User click 'show details' - get record 
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/show_details.png)
 

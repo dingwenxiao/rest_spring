@@ -51,8 +51,7 @@ public class Record {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       Record record = (Record) o;
-      return value == record.value &&
-              Objects.equals(isPalindrome, record.isPalindrome);
+      return value == record.value;
   }
 
   @Override

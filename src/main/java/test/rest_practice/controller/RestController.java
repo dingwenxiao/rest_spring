@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.rest_practice.model.Record;
@@ -23,12 +24,14 @@ public class RestController {
   RecordService recordService;
 
 
-  @RequestMapping(value = "/getAllRecords", method = RequestMethod.GET, produces = "application/json")
-  public @ResponseBody List<Record> getAllRecords() {
-    return recordService.getRecords();
+  @RequestMapping(value = "/getRecords", method = RequestMethod.GET, params = {"start", "offset"},
+      produces = "application/json")
+  public @ResponseBody List<Record> getAllRecords(@RequestParam(value = "start") int start,
+      @RequestParam(value = "offset") int offset) {
+    return recordService.getRecords(start, offset);
   }
 
-  @RequestMapping(value="/record/{value}", method = RequestMethod.GET)
+  @RequestMapping(value = "/record/{value}", method = RequestMethod.GET)
   public @ResponseBody Record getRecord(@PathVariable(value = "value") String id) {
     return recordService.getRecord(id);
   }
@@ -39,18 +42,11 @@ public class RestController {
     return responseRecord;
   }
 
-  // @RequestMapping (method = RequestMethod.PUT)
-  // public String updateEmployee(EmployeeVO employee)
-  // {
-  // //application code
-  // return "employeesDetail";
-  // }
-
   @RequestMapping(value = "/remove/{id}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeRecord(@PathVariable(value = "id") String recordId) {
     if (recordService.deleteRecord(recordId)) {
       return new ResponseEntity(HttpStatus.OK);
     }
-      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    return new ResponseEntity(HttpStatus.NOT_FOUND);
   }
 }

@@ -14,15 +14,15 @@ import test.rest_practice.model.Record;
 import test.rest_practice.service.RecordService;
 
 public class RecordServiceTest {
-  
+
   RecordService recordService;
-  
+
 
   @Before
   public void init() {
-     recordService = new RecordService();
-     Cache cache = new Cache();
-     recordService.setCache(cache);
+    recordService = new RecordService();
+    Cache cache = new Cache();
+    recordService.setCache(cache);
   }
 
   @Test
@@ -38,7 +38,7 @@ public class RecordServiceTest {
     Record record2 = new Record("bac", Boolean.FALSE, new Date());
     recordService.addRecord(record1);
     recordService.addRecord(record2);
-    List<Record> actualRecords = recordService.getRecords();
+    List<Record> actualRecords = recordService.getRecords(0, 10);
     assertFalse(actualRecords.indexOf(record1) == -1);
   }
 
@@ -59,8 +59,8 @@ public class RecordServiceTest {
     recordService.addRecord(record1);
     recordService.addRecord(record2);
     recordService.deleteRecord(record1.getValue());
-    List<Record> actualRecords = recordService.getRecords();
+    List<Record> actualRecords = recordService.getRecords(0, 10);
     assertEquals(actualRecords.size(), 1);
   }
-  
+
 }

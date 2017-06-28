@@ -92,7 +92,7 @@ public class RecordControllerTest {
 
   @Test
   public void getRecords() throws Exception {
-    mockMvc.perform(get("/getAllRecords"))
+    mockMvc.perform(get("/getRecords?start=0&&offset=10"))
         .andExpect(status().isOk()).andExpect(content().contentType(contentType))
         .andExpect(jsonPath("$.[0].value", is(this.recordList.get(0).getValue())))
         .andExpect(jsonPath("$.[0].isPalindrome", is(true)));

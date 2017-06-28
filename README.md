@@ -15,19 +15,19 @@
 
 ## Interaction Sequence Diagram
 
-1) User enter/refresh the url - get all records
+1) User enter/refresh - get all records
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/get_all_records.png)
 
-2) User click 'show details' - get record 
+2) User click 'show details' - get record. Details about the record, such as 'is palindrome' and created date.
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/show_details.png)
 
-3) User retrive a record - get record
+3) User retrive a record - get record. On text feild, type text, the corresponding record will show up on the list.
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/search_record.png)
 
-4) User click '-' - remove record
+4) User click '-' - remove record. 
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/delete_record.png)
 

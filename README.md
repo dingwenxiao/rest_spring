@@ -13,7 +13,7 @@
 *Backend server provide REST API and response client with Json.<br />
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
-The limitation on the maximum number of records per request is 10. 
+The maximum number of records is allowed for every request is 10. 
 
 ## Interaction Sequence Diagram
 

@@ -14,12 +14,13 @@
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
 ## Interaction Sequence Diagram
-@startuml
+<uml>
 User -> Browser: input text and click add
 Browser -> REST: POST
 REST --> Browser: json Response 
 Browser --> User: new record display
-@enduml
+</uml>
+
 
 ## How to build, deploy and access the app? 
 

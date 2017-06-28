@@ -34,6 +34,7 @@ The maximum number of records is allowed for every request is 10.
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/delete_record.png)
 
 ## How to build, deploy and access the app? 
+Pre: install jdk 8, maven, docker-ce.
 
 After Creating Amazon ec2 instance, on the instance you can do following:<br />
 1.Create an image<br />
@@ -46,6 +47,13 @@ After Creating Amazon ec2 instance, on the instance you can do following:<br />
   docker run -p 80:8080 -td rest_practice:0.1.0 <br />
 
 4.the access url is the your instance public ip address.<br />
+
+## Testing
+API Testing - test.rest_practice.RecordControllerTest
+
+Unit Testing - test.rest_practice.RecordServiceTest
+
+How to run? import the maven project to eclipse, and run above classes with junit.
 
 Rest API Documentation
 =====

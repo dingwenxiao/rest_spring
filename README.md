@@ -14,12 +14,7 @@
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
 ## Interaction Sequence Diagram
-<uml>
-User -> Browser: input text and click add
-Browser -> REST: POST
-REST --> Browser: json Response 
-Browser --> User: new record display
-</uml>
+![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/get_all_records.png)
 
 
 ## How to build, deploy and access the app? 

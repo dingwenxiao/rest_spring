@@ -19,7 +19,7 @@
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/get_all_records.png)
 
-2) User click 'show details' - get record. Details about the record, such as 'is palindrome' and created date.
+2) User click 'show details' - get record. Details show up on popup window with info like 'is palindrome' and created date.
 
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/show_details.png)
 

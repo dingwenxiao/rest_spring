@@ -14,8 +14,18 @@
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
 ## Interaction Sequence Diagram
+
+### User enter/refresh the url - get all records
 ![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/get_all_records.png)
 
+### User click 'show details' - get record 
+![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/show_details.png)
+
+### User retrive a record - get record
+![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/search_record.png)
+
+### User click '-' - remove record
+![Alt text](https://github.com/dingwenxiao/rest_spring/raw/master/screenshots/delete_record.png)
 
 ## How to build, deploy and access the app? 
 

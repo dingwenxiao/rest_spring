@@ -53,7 +53,9 @@ API Testing - test.rest_practice.RecordControllerTest
 
 Unit Testing - test.rest_practice.RecordServiceTest
 
-How to run? import the maven project to eclipse, and run above classes with junit.
+How to run? 
+
+import the maven project to eclipse, and run above classes with junit.
 
 Rest API Documentation
 =====

@@ -6,6 +6,7 @@
 *OS - Linux (Ubuntu Xenial 16.04) <br />
 *Docker CE <br />
 *Server is dockerized and hosted on AWS.<br />
+http://ec2-18-220-15-36.us-east-2.compute.amazonaws.com/
 
 ## Implementation archetecture:<br />
 *Desgin Pattern is Model View and Controller. <br />
@@ -46,7 +47,8 @@ After Creating Amazon ec2 instance, on the instance you can do following:<br />
 3.Run the docker image<br />
   docker run -p 80:8080 -td rest_practice:0.1.0 <br />
 
-4.the access url is the your instance public ip address.<br />
+4.the access url is the instance public ip address. for my poject is following<br />
+http://ec2-18-220-15-36.us-east-2.compute.amazonaws.com/
 
 ## Testing
 API Testing - test.rest_practice.RecordControllerTest

@@ -14,7 +14,7 @@ http://ec2-18-220-15-36.us-east-2.compute.amazonaws.com/
 *Backend server provide REST API and response client with Json.<br />
 (no database applied, only dummy cache class is used, so the data is stored in memory)
 
-The maximum number of records is allowed for every request is 10. 
+The maximum number of records allowed for every request is 10. 
 
 ## Interaction Sequence Diagram
 

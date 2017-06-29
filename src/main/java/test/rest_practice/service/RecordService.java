@@ -16,6 +16,8 @@ public class RecordService {
   private Cache cache;
 
   public List<Record> getRecords(int start, int offset, String value) {
+    if (start < 0 || start + offset < 0)
+      return null;
     return cache.getAllRecords(start, offset, value);
   }
 
@@ -32,14 +34,14 @@ public class RecordService {
   }
 
   public boolean deleteRecord(String id) {
-    return cache.remove(id)!=null;
+    return cache.remove(id) != null;
   }
 
   public Record addRecord(Record record) {
     Boolean isPalindrome = isPalindrome(record.getValue());
     Record newRecord = new Record(record.getValue(), isPalindrome, record.getDate());
     boolean isSaved = cache.saveRecord(newRecord);
-    return isSaved ? newRecord : new Record(null, null,null);
+    return isSaved ? newRecord : new Record(null, null, null);
   }
 
   private boolean isPalindrome(String s) {

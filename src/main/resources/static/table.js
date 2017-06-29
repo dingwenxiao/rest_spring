@@ -28,7 +28,7 @@ $(document).ready(function() {
             contentType: 'application/json'
         }).done(function(data) {
             console.log("Data Saved: " + data);
-            $('table tr:last').after('<tr><td data-id=' + data.id + '>' + data.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + data.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+            $('table tr:last').after('<tr><td class="col-md-6" data-id=' + data.id + '>' + data.value + '</td><td class="col-md-3"><span class="table-remove glyphicon glyphicon-remove"></span></td><td class="col-md-3"><button id=' + data.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
         });
     });
 
@@ -37,7 +37,7 @@ $(document).ready(function() {
         $('table').find("tr:gt(0)").remove();
         $.get("/getRecords?start=0&&offset=10&&value=" + value, function(data) {
             $.each(data, function(key, value) {
-                $('table tr:last').after('<tr><td data-id=' + value.id + '>' + value.value + '</td><td><span class="table-remove glyphicon glyphicon-remove"></span></td><td><button id=' + value.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
+                $('table tr:last').after('<tr><td class="col-md-6" data-id=' + value.id + '>' + value.value + '</td><td class="col-md-3"><span class="table-remove glyphicon glyphicon-remove"></span></td><td class="col-md-3"><button id=' + value.id + ' class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">show details</button></td></tr>');
             });
         });
 

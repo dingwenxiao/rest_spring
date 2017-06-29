@@ -5,7 +5,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="table.js"></script>
-
+<script src="paging.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
@@ -18,20 +18,43 @@
 
   <div class="col-sm-2">
    <button class="btn btn-primary btn-sm table-add">Add</button>
-   <button class="btn btn-primary btn-sm table-search">Retrive</button></div>  
+   <button class="btn btn-primary btn-sm table-search">Retrive</button>
+   </div>  
   <div id="table" class="table-editable">
     <table id="sub" class="table">
     <!-- <span class="col-sm-4 glyphicon glyphicon-plus"></span> -->
       <tr>
-        <th>Text</th>
-        <th>Delete</th>
-        <th>Details</th>
+        <th class="col-md-6">Text</th>
+        <th class="col-md-3">Delete</th>
+        <th class="col-md-3">Details</th>
       </tr>
       <!-- This is our clonable table line -->
      
     </table>
   </div>
-  
+
+  <div class="text-center">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" id="previous"  href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link page-num" href="#">1</a></li>
+    <li class="page-item"><a class="page-link page-num" href="#">2</a></li>
+    <li class="page-item"><a class="page-link page-num"  href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" id="next" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
